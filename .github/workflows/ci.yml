@@ -1,0 +1,20 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  verify-artifacts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Verify required artifacts
+        run: |
+          test -f "ActivityDiagram1.jpg"
+          test -f "ContextDiagram.jpg"
+          test -f "ERDDiagram1.jpg"
+          test -f "Main UI.docx"
+          test -f "Project Solution.docx"
